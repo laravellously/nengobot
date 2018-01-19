@@ -22,6 +22,7 @@ Indicator.prototype.calculateEMAdiff = function() {
   var longEMA = this.long.result;
 
   this.result = 100 * (shortEMA - longEMA) / ((shortEMA + longEMA) / 2);
+  // this.result = 2 + longEMA - (shortEMA * longEMA);
 }
 
 module.exports = Indicator;

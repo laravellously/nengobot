@@ -38,7 +38,7 @@ method.check = function(candle) {
   var diff = dema.result;
   var price = candle.close;
 
-  var message = '@ ' + price.toFixed(8) + ' (' + diff.toFixed(5) + ')';
+  var message = '@ ' + price.toFixed(8);
 
   if(diff > this.settings.thresholds.up) {
     log.debug('we are currently in uptrend', message);
@@ -46,6 +46,7 @@ method.check = function(candle) {
     if(this.currentTrend !== 'up') {
       this.currentTrend = 'up';
       this.advice('long');
+      log.debug('bought', message);
     } else
       this.advice();
 
@@ -55,6 +56,7 @@ method.check = function(candle) {
     if(this.currentTrend !== 'down') {
       this.currentTrend = 'down';
       this.advice('short');
+      log.debug('sold', message);
     } else
       this.advice();
 

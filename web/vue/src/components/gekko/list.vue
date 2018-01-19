@@ -31,6 +31,7 @@
     table.full(v-if='stratrunners.length')
       thead
         tr
+          th id
           th exchange
           th currency
           th asset
@@ -38,8 +39,10 @@
           th duration
           th strategy
           th profit
+          th delete?
       tbody
-        tr.clickable(v-for='gekko in stratrunners', v-on:click='$router.push({path: `live-gekkos/stratrunner/${gekko.id}`})')
+        tr
+          td.clickable(v-for='gekko in stratrunners', v-on:click='$router.push({path: `live-gekkos/stratrunner/${gekko.id}`})') {{ gekko.id }}
           td {{ gekko.watch.exchange }}
           td {{ gekko.watch.currency }}
           td {{ gekko.watch.asset }}
@@ -51,6 +54,8 @@
           td
             template(v-if='!gekko.report') 0
             template(v-if='gekko.report') {{ round(gekko.report.profit) }} {{ gekko.watch.currency }}
+          td
+            router-link.btn--danger(to='api/killGekko/${gekko.id}') Kill This Gekko
     .hr
     h2 Start a new live Gekko
     router-link.btn--primary(to='/live-gekkos/new') Start a new live Gekko!
@@ -66,7 +71,7 @@ const text = marked(`
 
 ## Live Gekko
 
-Run your strategy against the live market!
+Run your strategy against live market data!
 
 `);
 
@@ -116,14 +121,14 @@ table.clickable {
   border-collapse: separate;
 }
 
-tr.clickable td:nth-child(1) {
+td.clickable td:nth-child(1) {
   padding-left: 5px;
 }
 
-tr.clickable {
+td.clickable {
   cursor: pointer;
 }
-tr.clickable:hover {
+td.clickable:hover {
   background: rgba(216,216,216,.99);
 }
 </style>

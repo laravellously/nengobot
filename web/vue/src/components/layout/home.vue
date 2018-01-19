@@ -2,7 +2,7 @@
   section.contain.grd-row
     .grd-row-col-3-6(v-html='left')
     .grd-row-col-3-6.txt--center
-      img(src='/assets/gekko.jpg')
+      img(src='/assets/nengo.jpg')
       p
         em The most valuable commodity I know of is information.
 </template>
@@ -21,6 +21,8 @@ and runs on nodejs.
 [Find out more](https://gekko.wizb.it/).
 
 *Gekko is 100% open source and free, if you paid for this you have been scammed.*
+
+(c)2018 Laravellous Martins. All Rights Reserved
 
 `);
 

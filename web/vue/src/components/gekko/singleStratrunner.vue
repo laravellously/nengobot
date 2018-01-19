@@ -4,9 +4,11 @@
       h1 Unknown Strat runner
       p Gekko doesn't know what strat runner this is...
     div(v-if='data')
-      h2.contain Strat runner
+      h2.contain Strategy Runner
       .grd.contain
         .grd-row
+          .grd-row-col-3-6
+            router-link.btn--danger(:to='api/killGekko/${gekko.id}') Kill This Gekko
           .grd-row-col-3-6
             h3 Market
             .grd-row
